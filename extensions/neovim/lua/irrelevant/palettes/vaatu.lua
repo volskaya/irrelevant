@@ -1,0 +1,88 @@
+---Generated with github.com/volskaya/irrelevant.
+local vaatu = {
+  none = "NONE",
+
+  borderDark = "#080808",
+  borderLight = "#757575",
+
+  background = "#181818",
+  backgroundTerminal = "#181818",
+  foreground = "#ffffff",
+  foregroundActive = "#979797",
+  foregroundInactive = "#757575",
+
+  surface = "#212121",
+  modal = "#292929",
+  modalFocus = "#404040",
+  comment = "#757575",
+  divider = "#343434",
+  highlight = "#292929",
+  illuminate = "#444444", -- Has to be visible above modal.
+  lineHighlight = "#292929",
+  indentGuide = "#292929",
+  indent = "#292929",
+  irrelevant = "#757575",
+  underline = "#f148fb",
+  todo = "#ffffff",
+
+  accent = "#f148fb",
+  onAccent = "#000000",
+  number = "#FFFF33",
+  string = "#f148fb",
+  bracket = "#525252",
+  operator = "#757575",
+  danger = "#ff1652",
+  warning = "#525252",
+  success = "#b2fa52",
+  onDanger = "#000000",
+
+  base04 =  "#000000",
+  base03 = "#000000",
+  base02 = "#ffffff",
+  base01 = "#ffffff",
+  base00 = "#ffffff",
+  base0 = "#444444",
+  base1 = "#666666",
+  base2 = "#757575",
+  base3 = "#878787",
+  base4 = "#979797",
+
+  gray0 = "#444444",
+  gray1 = "#666666",
+  gray2 = "#757575",
+  gray3 = "#878787",
+  gray4 = "#979797",
+  gray5 = "#A6A6A6",
+  gray6 = "#DDDDDD",
+  gray00 = "#ffffff",
+  gray01 = "#ffffff",
+  gray02 = "#ffffff",
+  gray03 = "#000000",
+  gray04 = "#000000",
+  gray05 = "#000000",
+  gray06 = "#000000",
+
+  -- Somewhat backwards compatability with rainbow colors, in case anyone needs.
+  yellow = "#f148fb",
+  orange = "#757575",
+  red = "#757575",
+  magenta = "#757575",
+  violet = "#757575",
+  blue = "#f148fb",
+  cyan = "#757575",
+  green = "#f148fb",
+
+  -- LSP colors.
+  stringColor = "#f148fb",
+  booleanColor = "#FFFF33",
+  objectColor = "#f148fb",
+  irrelevantObjectColor = "#757575",
+  numberColor = "#FFFF33",
+  variableColor = "#ffffff",
+  argumentColor = "#ffffff",
+  operatorColor = "#757575",
+  methodColor = "#ffffff",
+  languageConstantColor = "#757575",
+}
+
+return vaatu

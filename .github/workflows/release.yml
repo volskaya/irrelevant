@@ -1,0 +1,126 @@
+name: Bump, Tag and Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      type:
+        description: Type of the version bump.
+        required: true
+        options:
+          - patch
+          - minor
+          - major
+
+jobs:
+  bump-and-tag:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # We're generating a changelog off commit names.
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Read current version
+        id: read_version
+        run: echo "::set-output name=version::$(cat VERSION)"
+
+      - name: Bump version
+        id: bump_version
+        run: |
+          CURRENT_VERSION=${{ steps.read_version.outputs.version }}
+          NEW_VERSION=$(npx semver -i ${{ github.event.inputs.type }} $CURRENT_VERSION)
+          echo $NEW_VERSION > VERSION
+          echo "::set-output name=new_version::$NEW_VERSION"
+
+      - name: Run update_extensions.py
+        run: python generator/update_extensions.py
+
+      - uses: taiki-e/install-action@git-cliff
+      - name: Generate changelog
+        id: generate_changelog
+        run: |
+          NEW_VERSION=${{ steps.bump_version.outputs.new_version }}
+          git cliff --unreleased --tag "v$NEW_VERSION" --strip all --prepend "CHANGELOG.md"
+
+      - name: Copy CHANGELOG.md to all extensions
+        run: |
+          for dir in extensions/*/; do
+            dir_name=$(basename "$dir")
+            cp "CHANGELOG.md" "$dir/CHANGELOG.md"
+          done
+
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: bump version to v${{ steps.bump_version.outputs.new_version }}"
+          branch: main
+          tagging_message: v${{ steps.bump_version.outputs.new_version }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # Create the release.
+      - name: Zip all directories in extensions/
+        run: |
+          for dir in extensions/*/; do
+            dir_name=$(basename "$dir")
+            (cd "$dir" && zip -r "../${dir_name}.zip" .)
+          done
+
+      - name: Create GitHub Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ steps.bump_version.outputs.new_version }}
+          release_name: Release v${{ steps.bump_version.outputs.new_version }}
+          draft: false
+          prerelease: false
+
+      - name: Upload Neovim Extension Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: extensions/neovim.zip
+          asset_name: neovim-extension.zip
+          asset_content_type: application/zip
+
+      - name: Upload VSCode Extension Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: extensions/vscode.zip
+          asset_name: vscode-extension.zip
+          asset_content_type: application/zip
+
+      # Commit neovim theme to the dummy repository.
+      - name: Checkout dummy repository
+        uses: actions/checkout@v4
+        with:
+          repository: volskaya/irrelevant.nvim
+          token: ${{ secrets.IRRELEVANT_NVIM_PAT }}
+          path: dummy_repo
+
+      - name: Update dummy repository contents
+        run: |
+          cd dummy_repo
+          find . -mindepth 1 -not -path './.git*' -exec rm -rf {} +
+          cp -r ../extensions/neovim/* ./
+
+      - name: Push dummy repository
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: update to v${{ steps.bump_version.outputs.new_version }}"
+          repository: dummy_repo
+        env:
+          GITHUB_TOKEN: ${{ secrets.IRRELEVANT_NVIM_PAT }}

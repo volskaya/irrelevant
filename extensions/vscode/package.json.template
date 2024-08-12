@@ -1,0 +1,22 @@
+{
+  "name": "irrelevant",
+  "displayName": "Irrelevant",
+  "description": "Neon-themed color scheme for Visual Studio Code",
+  "publisher": "Volskaya",
+  "repository": "https://github.com/volskaya/irrelevant",
+  "version": "{{version}}",
+  "engines": {
+    "vscode": "^1.59.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "contributes": {
+    "themes": [
+{{themes}}
+
+{{translucentThemes}}
+    ]
+  }
+}
+

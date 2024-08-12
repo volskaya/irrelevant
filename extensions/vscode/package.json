@@ -1,0 +1,42 @@
+{
+  "name": "irrelevant",
+  "displayName": "Irrelevant",
+  "description": "Neon-themed color scheme for Visual Studio Code",
+  "publisher": "Volskaya",
+  "repository": "https://github.com/volskaya/irrelevant",
+  "version": "0.0.2",
+  "engines": {
+    "vscode": "^1.59.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "contributes": {
+    "themes": [
+      { "label": "Irrelevant - Sakura", "uiTheme": "vs-dark", "path": "./themes/sakura.json" },
+      { "label": "Irrelevant - Mirai", "uiTheme": "vs-dark", "path": "./themes/mirai.json" },
+      { "label": "Irrelevant - Jinx", "uiTheme": "vs-dark", "path": "./themes/jinx.json" },
+      { "label": "Irrelevant - Lore", "uiTheme": "vs-dark", "path": "./themes/lore.json" },
+      { "label": "Irrelevant - Tiktok", "uiTheme": "vs-dark", "path": "./themes/tiktok.json" },
+      { "label": "Irrelevant - Powder", "uiTheme": "vs-dark", "path": "./themes/powder.json" },
+      { "label": "Irrelevant - Vaatu", "uiTheme": "vs-dark", "path": "./themes/vaatu.json" },
+      { "label": "Irrelevant - Po", "uiTheme": "vs-dark", "path": "./themes/po.json" },
+      { "label": "Irrelevant - Krone", "uiTheme": "vs-dark", "path": "./themes/krone.json" },
+      { "label": "Irrelevant - Volskaya", "uiTheme": "vs-dark", "path": "./themes/volskaya.json" },
+      { "label": "Irrelevant - Yulon", "uiTheme": "vs-dark", "path": "./themes/yulon.json" },
+
+      { "label": "Irrelevant - Sakura (Translucent)", "uiTheme": "vs-dark", "path": "./translucent-themes/sakura.json" },
+      { "label": "Irrelevant - Mirai (Translucent)", "uiTheme": "vs-dark", "path": "./translucent-themes/mirai.json" },
+      { "label": "Irrelevant - Jinx (Translucent)", "uiTheme": "vs-dark", "path": "./translucent-themes/jinx.json" },
+      { "label": "Irrelevant - Lore (Translucent)", "uiTheme": "vs-dark", "path": "./translucent-themes/lore.json" },
+      { "label": "Irrelevant - Tiktok (Translucent)", "uiTheme": "vs-dark", "path": "./translucent-themes/tiktok.json" },
+      { "label": "Irrelevant - Powder (Translucent)", "uiTheme": "vs-dark", "path": "./translucent-themes/powder.json" },
+      { "label": "Irrelevant - Vaatu (Translucent)", "uiTheme": "vs-dark", "path": "./translucent-themes/vaatu.json" },
+      { "label": "Irrelevant - Po (Translucent)", "uiTheme": "vs-dark", "path": "./translucent-themes/po.json" },
+      { "label": "Irrelevant - Krone (Translucent)", "uiTheme": "vs-dark", "path": "./translucent-themes/krone.json" },
+      { "label": "Irrelevant - Volskaya (Translucent)", "uiTheme": "vs-dark", "path": "./translucent-themes/volskaya.json" },
+      { "label": "Irrelevant - Yulon (Translucent)", "uiTheme": "vs-dark", "path": "./translucent-themes/yulon.json" }
+    ]
+  }
+}
+

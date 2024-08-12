@@ -1,0 +1,149 @@
+/**
+ * A generated volskaya theme for `prism.js`
+ * @author Roland Volskaya (@volskaya)
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #c5c8c6;
+  font-family: "Maple Mono", Inconsolata, Monaco, Consolas, 'Courier New', Courier, monospace;
+  font-weight: 600;
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  line-height: 1.5;
+
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+
+  color: {{foreground}}
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  /* padding: 1em; */
+  overflow: auto;
+  border-radius: 0.3em;
+}
+
+/* :not(pre)>code[class*="language-"],
+pre[class*="language-"] {
+  background: {{background}};
+} */
+
+/* Inline code */
+:not(pre)>code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: {{comment}};
+}
+
+.token.punctuation {
+  color: {{punctuation}};
+}
+
+.namespace {
+  color: {{objectColor}}
+}
+
+.token.property {
+  color: {{foreground}};
+}
+
+.token.keyword,
+.token.tag {
+  color: {{punctuation}};
+}
+
+.token.class-name {
+  color: {{objectColor}};
+}
+
+.token.boolean {
+  color: {{booleanColor}};
+  /* color: {{foreground}}; */
+}
+
+.token.constant {
+  color: {{numberColor}};
+}
+
+.token.symbol,
+.token.deleted {
+  color: {{comment}};
+}
+
+.token.number {
+  color: {{numberColor}};
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: {{stringColor}};
+}
+
+.token.variable {
+  color: {{objectColor}};
+}
+
+.token.operator {
+  color: {{operatorColor}};
+}
+
+.token.entity {
+  color: {{activeForeground}};
+  cursor: help;
+}
+
+.token.url {
+  color: {{stringColor}};
+}
+
+.language-css .token.string,
+.style .token.string {
+  color: {{stringColor}};
+}
+
+.token.atrule,
+.token.attr-value {
+  color: {{argumentColor}};
+}
+
+.token.function {
+  color: {{methodColor}};
+}
+
+.token.regex {
+  color: {{numberColor}};
+}
+
+.token.important {
+  color: {{operatorColor}};
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
