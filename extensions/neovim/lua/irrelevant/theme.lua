@@ -40,7 +40,7 @@ function M.setup()
     --
     DiffAdd = { fg = c.accent, bg = c.none, bold = enable_bolds }, -- diff mode: Added line |diff.txt|
     DiffChange = { fg = c.irrelevant, bg = c.none, bold = enable_bolds }, -- diff mode: Changed line |diff.txt|
-    DiffDelete = { fg = c.irrelevant, bg = c.none, bold = enable_bolds }, -- diff mode: Deleted line |diff.txt|
+    DiffDelete = { fg = c.danger, bg = c.none, bold = enable_bolds }, -- diff mode: Deleted line |diff.txt|
     DiffText = { fg = c.foreground, bg = c.none, bold = enable_bolds }, -- diff mode: Changed text within a changed line |diff.txt|
     --
     EndOfBuffer = { fg = c.irrelevant }, -- filler lines (~) after the end of the buffer.  By default, this is highlighted like |hl-NonText|.
